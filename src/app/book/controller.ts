@@ -5,6 +5,7 @@ import { errorResponse, successResponse } from '../../utils/response';
 import {
   DEFAULT_LIMIT,
   DEFAULT_PAGE,
+  ERROR_RESPONSE_MESSAGE,
   STATUS_CODE,
 } from '../../utils/constant/options';
 
@@ -49,7 +50,7 @@ export default class BookController {
       return errorResponse(
         res,
         STATUS_CODE.INTERNAL_SERVER_ERROR,
-        'An error occurred'
+        ERROR_RESPONSE_MESSAGE
       );
     }
   }
@@ -86,7 +87,7 @@ export default class BookController {
       return errorResponse(
         res,
         STATUS_CODE.INTERNAL_SERVER_ERROR,
-        'An error occurred'
+        ERROR_RESPONSE_MESSAGE
       );
     }
   }
@@ -116,7 +117,7 @@ export default class BookController {
       return errorResponse(
         res,
         STATUS_CODE.INTERNAL_SERVER_ERROR,
-        'An error occurred'
+        ERROR_RESPONSE_MESSAGE
       );
     }
   }

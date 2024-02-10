@@ -2,7 +2,10 @@ import AuthService from './service';
 import logger from '../../config/logger';
 import { Request, Response } from 'express';
 import { errorResponse, successResponse } from '../../utils/response';
-import { STATUS_CODE } from '../../utils/constant/options';
+import {
+  ERROR_RESPONSE_MESSAGE,
+  STATUS_CODE,
+} from '../../utils/constant/options';
 
 export default class AuthController {
   /**
@@ -32,7 +35,7 @@ export default class AuthController {
       return errorResponse(
         res,
         STATUS_CODE.INTERNAL_SERVER_ERROR,
-        'An error occurred'
+        ERROR_RESPONSE_MESSAGE
       );
     }
   }

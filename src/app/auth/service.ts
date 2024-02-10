@@ -17,13 +17,13 @@ export default class AuthService {
       if (!user)
         return {
           message: 'Invalid credentials',
-          status: STATUS_CODE.BAD_REQUEST,
+          status: STATUS_CODE.CONFLICT,
         };
 
       if (user.password !== password)
         return {
           message: 'Invalid credentials',
-          status: STATUS_CODE.BAD_REQUEST,
+          status: STATUS_CODE.CONFLICT,
         };
 
       const accessToken = await JwtToken.generateToken({

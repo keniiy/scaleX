@@ -49,7 +49,6 @@ export default class BookRepository {
    */
   static async bookExists(bookName: string) {
     const books = await HelperFunctions.readCsv(regularUserCsvPath, 1, 100);
-    console.log('books', books.data);
 
     return books.data.some(
       (book: any) => book.bookName.toLowerCase() === bookName.toLowerCase()

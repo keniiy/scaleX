@@ -39,7 +39,7 @@ export default class AuthenticationMiddleware {
       logger.error(`isUserAuthenticated -> error: ${JSON.stringify(err)}`);
       return errorResponse(
         res,
-        STATUS_CODE.INTERNAL_SERVER_ERROR,
+        STATUS_CODE.UNAUTHORIZED,
         'Invalid Or Expired Token'
       );
     }

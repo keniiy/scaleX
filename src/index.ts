@@ -1,17 +1,17 @@
 import server from './routes/index';
 import keys from './config/keys';
 import logger from './config/logger';
+import http from 'http';
 
-const Port = keys.PORT;
+const Port = keys.PORT || 3000;
 
-const startServer = async () => {
-  try {
-    server.listen(Port, () => {
-      logger.info(`Server listening on port ${Port}`);
-    });
-  } catch (error) {
-    logger.error(`Error starting server: ${JSON.stringify(error)}`);
-  }
+export const startServer = (): http.Server => {
+  const serverInstance = server.listen(Port, () => {
+    logger.info(`Server listening on port ${Port}`);
+  });
+  return serverInstance;
 };
 
-startServer();
+if (require.main === module) {
+  startServer();
+}

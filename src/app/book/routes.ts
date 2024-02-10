@@ -1,5 +1,5 @@
 import express from 'express';
-import { getBookSchema } from './validation';
+import { getBookSchema, addBookSchema } from './validation';
 import BookController from './controller';
 import validate from '../../validation/validatorClass';
 import AuthenticationMiddleware from '../../middleware/authMiddleware';
@@ -9,14 +9,15 @@ const router = express.Router();
 
 router.get(
   '/home',
-  validate(getBookSchema),
   AuthenticationMiddleware.isUserAuthenticated,
+  validate(getBookSchema),
   BookController.getBooksController
 );
 
 router.post(
   '/addBook',
   AuthenticationMiddleware.isUserAuthenticated,
+  validate(addBookSchema),
   AuthenticationMiddleware.isAllowedToAccessRoute([ADMIN]),
   BookController.addBookController
 );

@@ -15,7 +15,6 @@ export default class BookService {
     body: { page: number; limit: number }
   ) {
     try {
-      console.log('user', user);
       const books =
         user.role === USER_TYPE.ADMIN
           ? await BookRepository.getAdminBooks(body)
@@ -48,8 +47,6 @@ export default class BookService {
     try {
       const bookExists = await BookRepository.bookExists(body.bookName);
 
-      console.log('bookExists', bookExists);
-
       if (bookExists) {
         return {
           message: 'Book already exists',
@@ -62,7 +59,7 @@ export default class BookService {
 
       return {
         message: 'Book added successfully',
-        status: 201,
+        status: STATUS_CODE.CREATED,
         data: book,
       };
     } catch (error: any) {
@@ -84,7 +81,7 @@ export default class BookService {
       if (!bookExists) {
         return {
           message: 'Book does not exist',
-          status: 400,
+          status: STATUS_CODE.NOT_FOUND,
         };
       }
       const book = await BookRepository.deleteBook(bookName);
@@ -93,7 +90,7 @@ export default class BookService {
 
       return {
         message: 'Book deleted successfully',
-        status: 200,
+        status: STATUS_CODE.OK,
         data: book,
       };
     } catch (error: any) {

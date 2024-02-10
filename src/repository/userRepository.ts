@@ -3,7 +3,7 @@ import UserData from '../utils/data/user';
 const AdminUserCsvPath = '../../utils/csv/AdminUser.csv';
 const regularUserCsvPath = '../../utils/csv/RegularUser';
 
-export default class AuthRepository {
+export default class UserRepository {
   /**
    * @static
    * @description This method is used to login a user
